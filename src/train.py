@@ -22,7 +22,7 @@ def train_model():
     print(f"Accuracy: {accuracy}")
 
     # Save model
-    joblib.dump(model, "model.pkl")
+    joblib.dump(model, "src/model.pkl")
 
 
 if __name__ == "__main__":
