@@ -22,6 +22,33 @@ jobs:
       - name: Run linter
         run: |
           flake8 src/
+          
+  training:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Train the model
+        run: python src/train.py
+  store-model:
+    runs-on: ubuntu-latest
+    needs: training
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Add the model to the repository
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add model.pkl
+          git commit -m "Add trained model"
+          git push
 
   testing:
     runs-on: ubuntu-latest
