@@ -42,7 +42,7 @@ jobs:
           python src/train.py
       - name: Test model
         run: |
-          pytest tests/
+          PYTHONPATH=src pytest tests/
       - name: Save model artifact
         uses: actions/upload-artifact@v3
         with:
