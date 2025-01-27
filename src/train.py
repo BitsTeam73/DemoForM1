@@ -22,9 +22,6 @@ def train_model():
     accuracy = accuracy_score(y_test, predictions)
     print(f"Accuracy: {accuracy}")
 
-    # Save the model
-    joblib.dump(model, "models/model.pkl")
-
 
 if __name__ == "__main__":
     train_model()
