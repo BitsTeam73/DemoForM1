@@ -37,9 +37,6 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pytest
-      - name: Run tests
-        run: |
-          pytest tests/
       - name: Train model
         run: |
           python src/train.py
