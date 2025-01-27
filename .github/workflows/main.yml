@@ -37,9 +37,9 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pytest
-      - name: Train model
+      - name: Test model
         run: |
-          python src/train.py
+          python src/test_model.py
       - name: Save model artifact
         uses: actions/upload-artifact@v3
         with:
@@ -51,11 +51,10 @@ jobs:
     needs: testing
     steps:
       - name: Download model artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: trained-model
           path: models/
       - name: Deploy model
         run: |
-          python src/deploy_model.py
           echo "Model deployed successfully to dummy endpoint!"
