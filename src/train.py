@@ -24,7 +24,6 @@ def train_model():
     print(f"Accuracy: {accuracy}")
 
     # Save the model
-    os.makedirs("models", exist_ok=True)  # Ensure the directory exists
     joblib.dump(model, "models/model.pkl")
 
 
