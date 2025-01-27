@@ -7,6 +7,7 @@ import os
 
 
 def train_model():
+    """Train and save a logistic regression model using the Iris dataset."""
     # Load dataset
     data = load_iris()
     X_train, X_test, y_train, y_test = train_test_split(
@@ -22,9 +23,9 @@ def train_model():
     accuracy = accuracy_score(y_test, predictions)
     print(f"Accuracy: {accuracy}")
 
-     # Save the model
+    # Save the model
     os.makedirs("models", exist_ok=True)  # Ensure the directory exists
-    joblib.dump(clf, "models/model.pkl")
+    joblib.dump(model, "models/model.pkl")
 
 
 if __name__ == "__main__":
