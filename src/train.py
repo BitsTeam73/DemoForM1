@@ -21,8 +21,9 @@ def train_model():
     accuracy = accuracy_score(y_test, predictions)
     print(f"Accuracy: {accuracy}")
 
-    # Save model
-    joblib.dump(model, "src/model.pkl")
+     # Save the model
+    os.makedirs("models", exist_ok=True)  # Ensure the directory exists
+    joblib.dump(clf, "models/model.pkl")
 
 
 if __name__ == "__main__":
