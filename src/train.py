@@ -3,6 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
+import os
 
 
 def train_model():
@@ -21,6 +22,11 @@ def train_model():
     predictions = model.predict(X_test)
     accuracy = accuracy_score(y_test, predictions)
     print(f"Accuracy: {accuracy}")
+
+    # Save the model
+    os.makedirs("models", exist_ok=True)  # Ensure the directory exists
+    joblib.dump(model, "models/model.pkl")
+    print("Model saved to models/model.pkl")
 
 
 if __name__ == "__main__":
